@@ -29,9 +29,6 @@ namespace SolidPrinciples.InterfaceSegregation
             HoursInMonth = hoursInMonth;
         }
 
-        public float CalculateNetSalary() => HourlyRate * HoursInMonth;
-
-        public float GetSalary() => CalculateNetSalary();
-        
+        public float CalculateNetSalary() => HourlyRate * HoursInMonth;        
     }
 }

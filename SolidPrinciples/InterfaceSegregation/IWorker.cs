@@ -7,7 +7,5 @@ namespace SolidPrinciples.InterfaceSegregation
         string Name { get; set; }
         
         string Email { get; set; }
-
-        public float GetSalary();
     }
 }

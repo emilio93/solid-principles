@@ -1,7 +1,10 @@
 ﻿namespace SolidPrinciples.InterfaceSegregation
 {
-    interface IContractWorkerSalary : IWorker
+    public interface IContractWorkerSalary : IWorker
     {
-        public float CalculateWorkedSalary();
+        float MonthlySalary { get; set; }
+        float OtherBenefits { get; set; }
+
+        float CalculateWorkedSalary();
     }
 }

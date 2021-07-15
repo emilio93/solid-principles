@@ -30,7 +30,5 @@ namespace SolidPrinciples.InterfaceSegregation
         }
         
         public float CalculateWorkedSalary() => MonthlySalary + OtherBenefits;
-
-        public float GetSalary() => CalculateWorkedSalary();
     }
 }
