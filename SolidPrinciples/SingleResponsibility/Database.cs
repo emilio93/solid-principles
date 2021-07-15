@@ -5,7 +5,7 @@ namespace SolidPrinciples.SR
     // SR is to handle database connection.
     public class Database
     {
-        public bool InsertPerson(Person person)
+        public static bool InsertPerson(Person person)
         {
             ConnectToDatabase();
             // insert person in database.
@@ -14,14 +14,14 @@ namespace SolidPrinciples.SR
             return true;
         }
 
-        private bool ConnectToDatabase()
+        private static bool ConnectToDatabase()
         {
             // create connection to database.
             Console.WriteLine("Conected to database.");
             return true;
         }
 
-        private bool CloseDatabaseConnection()
+        private static bool CloseDatabaseConnection()
         {
             // close database connection.
             Console.WriteLine("Closed database connection.");

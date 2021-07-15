@@ -4,7 +4,7 @@ namespace SolidPrinciples.SR
 {
     public class ReportGenerator
     {
-        public bool GenerateReport(Person person)
+        public static bool GenerateReport(Person person)
         {
             // Generate report.
             Console.WriteLine(
