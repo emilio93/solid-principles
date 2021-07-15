@@ -1,5 +1,3 @@
-using System;
-
 namespace SolidPrinciples.Liskov
 {
     public class FreelancerEmployee : EmployeeBase
