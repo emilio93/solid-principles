@@ -2,7 +2,7 @@ using System;
 
 namespace SolidPrinciples.InterfaceSegregation
 {
-    public class FullTimeWorker
+    public class FullTimeWorker : IFullTimeWorkerSalary
     {
         public string Id { get; set; }
         
@@ -10,16 +10,28 @@ namespace SolidPrinciples.InterfaceSegregation
         
         public string Email { get; set; }
         
-        public float MonthlySalary { get; set; }
-        
-        public float OtherBenefits { get; set; }
-        
         public float HourlyRate { get; set; }
         
         public float HoursInMonth { get; set; }
         
-        public float CalculateNetSalary() => MonthlySalary + OtherBenefits;
+        public FullTimeWorker(
+            string id,
+            string name,
+            string email,
+            float hourlyRate,
+            float hoursInMonth
+        )
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            HourlyRate = hourlyRate;
+            HoursInMonth = hoursInMonth;
+        }
+
+        public float CalculateNetSalary() => HourlyRate * HoursInMonth;
+
+        public float GetSalary() => CalculateNetSalary();
         
-        public float CalculateWorkedSalary() => throw new NotImplementedException();
     }
 }
