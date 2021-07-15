@@ -1,23 +1,16 @@
-using SolidPrinciples.OpenClosed;
 using SolidPrinciples.SR;
+using System;
 
 namespace SolidPrinciples.OpenClosed
 {
-    public class ReportGenerator
+    public abstract class ReportGenerator
     {
         public string ReportType { get; set; }
 
-        public void GenerateReport(Person person)
+        public virtual void GenerateReport(Person person)
         {
-            if (ReportType == "CRS")
-            {
-                // Report generation with person data in Crystal Report.
-            }
-            
-            if (ReportType == "PDF")
-            {
-                // Report generation with person data in PDF.
-            }
+            // defaults to console generation report.
+            Console.WriteLine($"{person.PersonId} {person.PersonName}");
         }
     }
 }
