@@ -33,21 +33,21 @@ namespace SolidPrinciples
 
             foreach (Person person in people)
             {
-                person.InsertPerson(person);
-                person.getReport(person);
+                Database.InsertPerson(person);
+                ReportGenerator.GenerateReport(person);
             }
         }
 
         private static void testOpenClosed()
         {
             List<Person> people = getPeople();
-            var reportGenerators = new List<OpenClosed.ReportGenerator>
+            var reportGenerators = new List<OpenClosed.IReportGenerator>
             {
                 new OpenClosed.PDFReportGenerator(),
                 new OpenClosed.CRSReportGenerator(),
             };
 
-            foreach (OpenClosed.ReportGenerator reportGenerator in reportGenerators)
+            foreach (OpenClosed.IReportGenerator reportGenerator in reportGenerators)
             {
                 foreach (Person person in people)
                 {
@@ -58,38 +58,39 @@ namespace SolidPrinciples
 
         private static void testLiskov()
         {
-            List<EmployeeBase> employeeList = new List<EmployeeBase>
+            var employeeList = new List<IEmployeeBase>
             {
                 new FreelancerEmployee(),
                 new RegularEmployee()
             };
 
-            foreach (EmployeeBase employee in employeeList)
+            foreach (IEmployeeBase employee in employeeList)
             {
-                Console.WriteLine(employee.GetEmployeeDetails(1245));
+                Console.WriteLine(employee.GetProjectDetails(1245));
             }
         }
 
         private static void testInterfaceSegregation()
         {
-            List<IWorker> workers = new List<IWorker>
+            var workers = new List<IWorker>
             {
                 new FullTimeWorker("1", "Juan", "juan@gmail.com", 10, 200),
-                new ContractEmployee("1", "Pablo", "pablo@gmail.com", 2000, 200)
+                new ContractEmployee("2", "Pablo", "pablo@gmail.com", 2000, 200)
             };
 
             foreach (IWorker worker in workers)
             {
-                Console.WriteLine($"Salario {worker.Name}: {worker.GetSalary()}");
+                Console.WriteLine($"Worker {worker.Id} {worker.Name} {worker.Email}");
             }
         }
 
         private static void testDependencyInversion()
         {
-            List<IEmployeeDetails> employeeDetailsList = new List<IEmployeeDetails>
+            var salaryCalculator = SalaryCalculatorFactory.GetSalaryCalculatorObj();
+            var employeeDetailsList = new List<IEmployeeDetails>
             {
-                new EmployeeDetails(100, 10),
-                new EmployeeDetails(100, 15)
+                new EmployeeDetails(100, 10, salaryCalculator),
+                new EmployeeDetails(100, 15, salaryCalculator)
             };
 
             int i = 0;
