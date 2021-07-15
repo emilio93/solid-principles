@@ -1,15 +1,23 @@
 namespace SolidPrinciples.DependencyInversion
 {
-    public class EmployeeDetails
+    public class EmployeeDetails : IEmployeeDetails
     {
         public int HoursWorked { get; set; }
         
         public int HourlyRate { get; set; }
+
+        private ISalaryCalculator _salaryCalculator;
+
+        public EmployeeDetails(int hoursWorked, int hourlyRate)
+        {
+            HoursWorked = hoursWorked;
+            HourlyRate = hourlyRate;
+            _salaryCalculator = SalaryCalculatorFactory.GetSalaryCalculatorObj();
+        }
         
         public float GetSalary()
         {  
-            var salaryCalculator = new SalaryCalculator();
-            return salaryCalculator.CalculateSalary(HoursWorked, HourlyRate);
+            return (float) _salaryCalculator.CalculateSalary(HoursWorked, HourlyRate);
         }  
     }
 }
