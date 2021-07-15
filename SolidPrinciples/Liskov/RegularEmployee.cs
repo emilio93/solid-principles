@@ -1,13 +1,13 @@
 namespace SolidPrinciples.Liskov
 {
-    public class RegularEmployee : EmployeeBase
+    public class RegularEmployee : IRegularEmployee
     {
-        public override string GetProjectDetails(int employeeId)
+        public string GetProjectDetails(int employeeId)
         {
             return "Child Project(RegularEmployee)";
         }
 
-        public override string GetEmployeeDetails(int employeeId)
+        public string GetEmployeeDetails(int employeeId)
         {
             return "Child Employee(RegularEmployee)";
         }
