@@ -6,12 +6,12 @@ namespace SolidPrinciples.Liskov
     {
         public override string GetProjectDetails(int employeeId)
         {
-            return "Child Project";
+            return "Child Project(FreelancerEmployee)";
         }
         
         public override string GetEmployeeDetails(int employeeId)
         {
-            throw new NotImplementedException();
+            return "Child Employee(FreelancerEmployee)";
         }
     }
 }
