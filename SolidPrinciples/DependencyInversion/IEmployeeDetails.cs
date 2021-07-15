@@ -1,11 +1,11 @@
 ﻿namespace SolidPrinciples.DependencyInversion
 {
-    interface IEmployeeDetails
+    public interface IEmployeeDetails
     {
-        public int HoursWorked { get; set; }
+        int HoursWorked { get; set; }
 
-        public int HourlyRate { get; set; }
+        int HourlyRate { get; set; }
 
-        public float GetSalary();
+        float GetSalary();
     }
 }

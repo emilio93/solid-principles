@@ -8,11 +8,11 @@ namespace SolidPrinciples.DependencyInversion
 
         private ISalaryCalculator _salaryCalculator;
 
-        public EmployeeDetails(int hoursWorked, int hourlyRate)
+        public EmployeeDetails(int hoursWorked, int hourlyRate, ISalaryCalculator salaryCalculator)
         {
             HoursWorked = hoursWorked;
             HourlyRate = hourlyRate;
-            _salaryCalculator = SalaryCalculatorFactory.GetSalaryCalculatorObj();
+            _salaryCalculator = salaryCalculator;
         }
         
         public float GetSalary()

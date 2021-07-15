@@ -1,7 +1,7 @@
 ﻿namespace SolidPrinciples.DependencyInversion
 {
-    interface ISalaryCalculator
+    public interface ISalaryCalculator
     {
-        public float CalculateSalary(int hoursWorked, float hourlyRate);
+        float CalculateSalary(int hoursWorked, float hourlyRate);
     }
 }
